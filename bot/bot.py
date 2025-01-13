@@ -10,8 +10,8 @@ import pickle
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
-data = pd.read_csv('../mushrooms.csv')
-pickle_in = open('../classifier.pkl', 'rb')
+data = pd.read_csv('fungi-prediction\mushrooms.csv')
+pickle_in = open('fungi-prediction\classifier.pkl', 'rb')
 
 le = LabelEncoder()
 for column in data.columns:
@@ -52,7 +52,7 @@ parameters = [
 ]
 
 user_states = {}
-
+print(123)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = update.effective_user.id
     user_states[user_id] = {"step": 0, "choices": []}  # Инициализация состояния пользователя
