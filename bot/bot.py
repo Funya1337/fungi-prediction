@@ -10,8 +10,8 @@ import pickle
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
-data = pd.read_csv('fungi-prediction\mushrooms.csv')
-pickle_in = open('fungi-prediction\classifier.pkl', 'rb')
+data = pd.read_csv('../mushrooms.csv')
+pickle_in = open('../classifier.pkl', 'rb')
 
 le = LabelEncoder()
 for column in data.columns:
@@ -42,7 +42,6 @@ parameters = [
 ('поверхность_ножки_под_кольцом', ['гладкая (s)', 'волокнистая (f)', 'чешуйчатая (y)', 'шелковистая (k)'], [2, 0, 1, 3]),
 ('цвет_ножки_над_кольцом', ['белый (w)', 'серый (g)', 'розовый (p)', 'коричневый (n)', 'бежевый (b)', 'красный (e)', 'оранжевый (o)', 'цинамоновый (c)', 'жёлтый (y)'], [7, 3, 6, 4, 0, 2, 5, 1, 8]),
 ('цвет_ножки_под_кольцом', ['белый (w)', 'розовый (p)', 'серый (g)', 'бежевый (b)', 'коричневый (n)', 'красный (e)', 'жёлтый (y)', 'оранжевый (o)', 'цинамоновый (c)'], [7, 6, 3, 0, 4, 2, 8, 5, 1]),
-('тип_вуали', ['частное (p)'], [0]),
 ('цвет_вуали', ['белый (w)', 'коричневый (n)', 'оранжевый (o)', 'жёлтый (y)'], [2, 0, 1, 3]),
 ('число_колец', ['одно (o)', 'два (t)', 'нет (n)'], [1, 2, 0]),
 ('тип_кольца', ['подвесное (p)', 'исчезающее (e)', 'большое (l)', 'расходящееся (f)', 'нет (n)'], [4, 0, 2, 1, 3]),
@@ -116,6 +115,7 @@ async def process_final_result(update: Update, context: ContextTypes.DEFAULT_TYP
     choices = state["choices"]
 
     print(state)
+    choices.insert(14, 0)
     print(choices)
     print("asdfasdfasdfasdfasdf")
 
